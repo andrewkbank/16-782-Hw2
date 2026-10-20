@@ -307,8 +307,19 @@ int main(int argc, char** argv) {
   double* map;
 	int x_size, y_size;
 
-  // grader.py passes a map filename (map1.txt). Resolve it the same way as planner.cpp.
-  std::string mapFilePath = std::string(MAPS_DIR) + "/" + argv[1];
+  // Check if map exists as passed, otherwise check MAPS_DIR
+  std::string mapFilePath = argv[1];
+  std::FILE* testMap = fopen(mapFilePath.c_str(), "r");
+  if (testMap) {
+      fclose(testMap);
+  } else {
+      std::string fallbackMap = std::string(MAPS_DIR) + "/" + argv[1];
+      testMap = fopen(fallbackMap.c_str(), "r");
+      if (testMap) {
+          fclose(testMap);
+          mapFilePath = fallbackMap;
+      }
+  }
   tie(map, x_size, y_size) = loadMap(mapFilePath);
 	int numOfDOFs = std::stoi(argv[2]);
 	double* startPos = doubleArrayFromString(argv[3]);

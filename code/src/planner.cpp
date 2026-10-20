@@ -1413,10 +1413,18 @@ int main(int argc, char** argv) {
 	double* map;
 	int x_size, y_size;
 
-    std::string mapDirPath = MAPS_DIR;
-    std::string mapFilePath = mapDirPath + "/" + argv[1];
-    // g++ builds record a path relative to the process cwd (often build/).
-    // visualization is run from the code directory, so store an absolute path.
+    std::string mapFilePath = argv[1];
+    std::FILE* testMap = fopen(mapFilePath.c_str(), "r");
+    if (testMap) {
+        fclose(testMap);
+    } else {
+        std::string fallbackMap = std::string(MAPS_DIR) + "/" + argv[1];
+        testMap = fopen(fallbackMap.c_str(), "r");
+        if (testMap) {
+            fclose(testMap);
+            mapFilePath = fallbackMap;
+        }
+    }
 #ifndef _WIN32
     char resolvedMapPath[PATH_MAX];
     if (realpath(mapFilePath.c_str(), resolvedMapPath) != nullptr) {
@@ -1430,8 +1438,7 @@ int main(int argc, char** argv) {
 	double* goalPos = doubleArrayFromString(argv[4]);
 	int whichPlanner = std::stoi(argv[5]);
 
-    std::string outputDir = OUTPUT_DIR;
-	string outputFile = outputDir + "/" + argv[6];
+	string outputFile = argv[6];
 	std::cout << "Writing solution to: " << outputFile << std::endl;
 
 #ifndef _WIN32
