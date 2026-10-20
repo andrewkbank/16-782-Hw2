@@ -1,0 +1,30 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# CMake build cache (keep compiled binaries for Gradescope evaluation)
+code/build/CMakeCache.txt
+code/build/CMakeFiles/
+code/build/Makefile
+code/build/cmake_install.cmake
+code/build/compile_commands.json
+
+# Intermediate IDE / compiler files
+*.o
+*.a
+*.so
+*.dylib
+code/cmake-build-*/
+code/test_build/
+__pycache__/
+*.pyc
+
+# Temporary planner solution logs
+code/output/*.txt
+code/output/grader_out/*
+!code/output/grader_out/.gitkeep

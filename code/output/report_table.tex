@@ -1,0 +1,52 @@
+% ---------------------------------------------------------------------------------
+% CMU 16-782 Homework 2: Comprehensive Planner Benchmark Table
+% Instructions: Paste directly into your Overleaf report.
+% Ensure \usepackage{booktabs} and \usepackage{multirow} are in your preamble.
+% ---------------------------------------------------------------------------------
+\begin{table*}[t]
+\centering
+\small
+\caption{Comprehensive performance comparison of all five motion planning implementations across all six benchmark environments (20 random collision-free queries per map, 5.0\,s cutoff).}
+\label{tab:comprehensive_planner_results}
+\begin{tabular}{llcccccc}
+\toprule
+\textbf{Environment} & \textbf{Algorithm} & \textbf{DOFs} & \textbf{Success Rate} & \textbf{Mean Time (s)} & \textbf{Median Time (s)} & \textbf{Max Time (s)} & \textbf{Path Cost (rad)} \\
+\midrule
+\multirow{5}{*}{Map 1} & Vanilla RRT & 5 & 100.0\% & 0.017 & 0.016 & 0.031 &  9.91 $\pm$ 4.99 \\
+ & RRT-Connect & 5 & 100.0\% & 0.016 & 0.016 & 0.019 &  7.68 $\pm$ 2.57 \\
+ & Vanilla RRT* & 5 & 100.0\% & 0.172 & 0.170 & 0.191 &  8.84 $\pm$ 4.01 \\
+ & PRM & 5 & 100.0\% & 0.020 & 0.016 & 0.031 &  7.55 $\pm$ 3.15 \\
+ & \textbf{RRT* (Combined Heuristic)} & 5 & 100.0\% & 0.362 & 0.231 & 1.066 &  7.01 $\pm$ 2.09 \\
+\midrule
+\multirow{5}{*}{Map 2} & Vanilla RRT & 3 & 100.0\% & 0.019 & 0.018 & 0.027 &  9.31 $\pm$ 4.93 \\
+ & RRT-Connect & 3 & 100.0\% & 0.017 & 0.017 & 0.021 &  8.42 $\pm$ 3.86 \\
+ & Vanilla RRT* & 3 & 100.0\% & 0.055 & 0.055 & 0.059 &  6.85 $\pm$ 2.48 \\
+ & PRM & 3 & 100.0\% & 0.035 & 0.036 & 0.044 &  5.36 $\pm$ 1.67 \\
+ & \textbf{RRT* (Combined Heuristic)} & 3 & 100.0\% & 0.252 & 0.211 & 0.643 &  5.20 $\pm$ 1.98 \\
+\midrule
+\multirow{5}{*}{Map 3} & Vanilla RRT & 4 & 100.0\% & 0.017 & 0.016 & 0.027 &  6.94 $\pm$ 3.47 \\
+ & RRT-Connect & 4 & 100.0\% & 0.016 & 0.016 & 0.018 &  6.55 $\pm$ 1.96 \\
+ & Vanilla RRT* & 4 & 100.0\% & 0.076 & 0.076 & 0.088 &  7.54 $\pm$ 2.69 \\
+ & PRM & 4 & 100.0\% & 0.025 & 0.016 & 0.039 &  5.70 $\pm$ 1.72 \\
+ & \textbf{RRT* (Combined Heuristic)} & 4 & 100.0\% & 0.221 & 0.216 & 0.592 &  5.44 $\pm$ 1.63 \\
+\midrule
+\multirow{5}{*}{Map 4} & Vanilla RRT & 5 &  85.0\% & 0.843 & 0.044 & 4.520 & 20.25 $\pm$ 11.98 \\
+ & RRT-Connect & 5 & 100.0\% & 0.022 & 0.018 & 0.054 & 17.85 $\pm$ 10.01 \\
+ & Vanilla RRT* & 5 &  75.0\% & 0.421 & 0.130 & 1.224 & 11.71 $\pm$ 5.87 \\
+ & PRM & 5 & 100.0\% & 0.089 & 0.048 & 0.608 & 18.15 $\pm$ 7.94 \\
+ & \textbf{RRT* (Combined Heuristic)} & 5 &  75.0\% & 1.011 & 0.470 & 3.052 & 10.18 $\pm$ 5.69 \\
+\midrule
+\multirow{5}{*}{Map 5} & Vanilla RRT & 4 & 100.0\% & 0.017 & 0.017 & 0.020 &  7.03 $\pm$ 3.71 \\
+ & RRT-Connect & 4 & 100.0\% & 0.016 & 0.016 & 0.017 &  6.00 $\pm$ 1.98 \\
+ & Vanilla RRT* & 4 & 100.0\% & 0.171 & 0.169 & 0.193 &  7.01 $\pm$ 2.83 \\
+ & PRM & 4 & 100.0\% & 0.026 & 0.016 & 0.112 &  5.98 $\pm$ 2.73 \\
+ & \textbf{RRT* (Combined Heuristic)} & 4 & 100.0\% & 0.306 & 0.288 & 0.584 &  5.17 $\pm$ 1.99 \\
+\midrule
+\multirow{5}{*}{Map Challenge} & Vanilla RRT & 5 &  80.0\% & 1.074 & 0.059 & 3.683 & 16.77 $\pm$ 5.60 \\
+ & RRT-Connect & 5 & 100.0\% & 0.036 & 0.019 & 0.228 & 20.47 $\pm$ 11.22 \\
+ & Vanilla RRT* & 5 &  70.0\% & 0.146 & 0.060 & 0.390 & 13.41 $\pm$ 5.82 \\
+ & PRM & 5 & 100.0\% & 0.101 & 0.072 & 0.207 & 17.75 $\pm$ 6.91 \\
+ & \textbf{RRT* (Combined Heuristic)} & 5 &  70.0\% & 0.375 & 0.256 & 0.892 & 12.33 $\pm$ 5.64 \\
+\bottomrule
+\end{tabular}
+\end{table*}
